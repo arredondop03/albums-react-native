@@ -1,7 +1,8 @@
 //Import a library to help create a component
 import React from 'react'; //knows how a component should behave and how to make it work with other components
-import { Text, AppRegistry } from 'react-native'; //takes the output and puts it in a screen
-
+import { Text, AppRegistry , View} from 'react-native'; //takes the output and puts it in a screen
+import Header from './src/components/header'
+import AlbumList from './src/components/AlbumList'
 
     //we import to have access to code that lives elsewhere 
     //to make something appear in the screen we use tags that look like html tags but are not
@@ -16,10 +17,16 @@ import { Text, AppRegistry } from 'react-native'; //takes the output and puts it
 const App = () =>{
 
   return (
-    <Text>Some text</Text> //this a variable that is undefined because we dont have automatic acces to it
+    // <Text>Some text</Text> //this a variable that is undefined because we dont have automatic acces to it
     //we need to implement something called import destructuring where we will say that we dont actually need 
     //to import the whole library, we only need access to the variable Text and AppRegistry
+    <View>
+      <Header headerText={'Albums'}/>
+      <AlbumList/>
+    </View>
   );
+  //Since we cannot return two jsx tags we will wrap them in a view tag to satisfy the requirement
+
 
 };
 
