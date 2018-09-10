@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {View, Text} from 'react-native'
+import {ScrollView} from 'react-native'
 import axios from 'axios'
-
+import AlbumDetail from './AlbumDetail'
 
 //Definition of state: A plain JavaScript object (only works with class based components) used to 
 //record and respond to user-triggered events
@@ -15,19 +15,24 @@ class AlbumList extends Component {
   componentWillMount(){
     axios.get('https://rallycoding.herokuapp.com/api/music_albums')   //this is the http request
     .then( response => this.setState({albums: response.data}))  //after we get the response fro the API we update the state of albums and the AlbumsList component rerenders
-  } 
+  } //here we are also producing an array
 
   renderAlbums() {
-    return this.state.albums.map( album => <Text>{album.title}</Text>)
-  }
+    return this.state.albums.map( album => 
+    <AlbumDetail key={album.title} album={album}/>// we need to pass the infromation to a child component(in this case the albumdetail component) so we
+    //need to pass it as a prop
+
+    )
+  } //the key has to be unique so it is better if we put something that might me unique
+  //like the albums name or if we have access to the albums ID would be better to use that
 
   render() {
     console.log(this.state)
 
     return(
-      <View>
+      <ScrollView>
       {this.renderAlbums()}
-      </View>
+      </ScrollView>
     )
   }
 }

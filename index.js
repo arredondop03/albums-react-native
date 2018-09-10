@@ -20,7 +20,7 @@ const App = () =>{
     // <Text>Some text</Text> //this a variable that is undefined because we dont have automatic acces to it
     //we need to implement something called import destructuring where we will say that we dont actually need 
     //to import the whole library, we only need access to the variable Text and AppRegistry
-    <View>
+    <View style={{flex:1}}>
       <Header headerText={'Albums'}/>
       <AlbumList/>
     </View>
